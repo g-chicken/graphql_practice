@@ -1,0 +1,65 @@
+"""
+Query ...
+"""
+type Query {
+  links: [Link!]!
+}
+
+"""
+Mutation ...
+"""
+type Mutation {
+  createLink(input: NewLink!): Link!
+  createUser(input: NewUser!): String!
+  login(input: Login!): String!
+  refreshToken(input: RefreshTokenInput!): String!
+}
+
+"""
+Link ...
+"""
+type Link {
+  address: String!
+  id: ID!
+  title: String!
+  user: User!
+}
+
+"""
+Login ...
+"""
+input Login {
+  password: String!
+  username: String!
+}
+
+"""
+NewLink ...
+"""
+input NewLink {
+  address: String!
+  title: String!
+}
+
+"""
+NewUser ...
+"""
+input NewUser {
+  password: String!
+  username: String!
+}
+
+"""
+RefreshTokenInput ...
+"""
+input RefreshTokenInput {
+  token: String!
+}
+
+"""
+User ...
+"""
+type User {
+  id: ID!
+  name: String!
+}

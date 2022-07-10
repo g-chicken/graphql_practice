@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  envoy:
+    image: envoyproxy/envoy:v1.22-latest
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "9090:9090"
+  svelte:
+    image: node:18
+    command: bash -c "yarn install && yarn dev"
+    environment:
+      NODE_ENV: "development"
+    working_dir: "/app"
+    volumes:
+      - ./svelte:/app
+    ports:
+      - "8082:8080"
+  golang:
+    image: golang:1.18
+    command: bash -c "make setup && make run"
+    working_dir: "/app"
+    volumes:
+      - ./golang:/app
+    ports:
+      - "8083:8080"

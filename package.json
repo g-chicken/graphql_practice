@@ -1,0 +1,18 @@
+{
+  "name": "graphql_practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/g-chicken/graphql_practice",
+  "author": "g-chicken <398ah16@gmail.com>",
+  "license": "MIT",
+  "graphql-schema-linter": {
+    "schemaPaths": ["./graph/**/*"]
+  },
+  "scripts": {
+    "lint-graph": "yarn graphql-schema-linter --except relay-page-info-spec,fields-have-descriptions,arguments-have-descriptions,input-object-values-have-descriptions"
+  },
+  "dependencies": {
+    "graphql": "^16.5.0",
+    "graphql-schema-linter": "^3.0.1"
+  }
+}
